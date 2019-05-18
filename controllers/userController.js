@@ -42,6 +42,7 @@ module.exports = {
             user.comparePassword(password, function(err, isMatch) {
                  if (err) throw err;
                console.log('Password', isMatch); 
+               
               if(isMatch){
                 const payload = {
                   id: user.id,
