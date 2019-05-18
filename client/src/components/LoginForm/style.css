@@ -1,10 +1,17 @@
 #login{
     
-background: #b4ddb4; /* Old browsers */
-background: -moz-linear-gradient(top, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00 67%, #005700 83%, #002400 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); /* IE6-9 */
+/* background: #b4ddb4; 
+background: -moz-linear-gradient(top, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00 67%, #005700 83%, #002400 100%); 
+background: -webkit-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); 
+background: linear-gradient(to bottom, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); IE6-9 */
+
+
+background: -moz-linear-gradient(top, rgba(180,221,180,0.43) 0%, rgba(131,199,131,0.43) 17%, rgba(122,195,122,0.43) 20%, rgba(82,177,82,0.49) 33%, rgba(0,138,0,0.64) 67%, rgba(0,87,0,0.72) 83%, rgba(0,72,0,0.74) 88%, rgba(0,36,0,0.74) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(180,221,180,0.43) 0%,rgba(131,199,131,0.43) 17%,rgba(122,195,122,0.43) 20%,rgba(82,177,82,0.49) 33%,rgba(0,138,0,0.64) 67%,rgba(0,87,0,0.72) 83%,rgba(0,72,0,0.74) 88%,rgba(0,36,0,0.74) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(180,221,180,0.43) 0%,rgba(131,199,131,0.43) 17%,rgba(122,195,122,0.43) 20%,rgba(82,177,82,0.49) 33%,rgba(0,138,0,0.64) 67%,rgba(0,87,0,0.72) 83%,rgba(0,72,0,0.74) 88%,rgba(0,36,0,0.74) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6eb4ddb4', endColorstr='#bd002400',GradientType=0 ); /* IE6-9 */
+
 margin-top: 7rem;
 }
 #login-form{

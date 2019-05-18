@@ -14,13 +14,28 @@ import { Link } from "react-router-dom";
 
 class Landing extends Component{
 
+    state = {
+        polls: [],
+
+    }
+
+    componentDidMount() {
+        this.loadPolls();
+      }
+
+    loadPolls = () => {
+        API.getPolls()
+          .then(res =>
+            this.setState({ polls: res.data})
+          )
+          .catch(err => console.log(err));
+      };
+
     render(){
 
   
         return (
             <Wrapper>
-        
-        
         
             <Nav />
                 

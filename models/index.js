@@ -1,3 +1,5 @@
 module.exports = {
-  Book: require("./book")
+  User: require("./user"),
+  Poll: require("./poll"),
+  //Vote: require("./vote")
 };
