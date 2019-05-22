@@ -6,10 +6,12 @@ var Schema = mongoose.Schema;
 const pollSchema = Schema({
     author: { type: Schema.Types.ObjectId, ref: 'User' },
     title: String,
+    heSaid: String,
+    sheSaid: String,
      created_at: { type: Date, default: Date.now },
      closing_date: Date,
      poll_length: Number,
-     choices: [
+     votes: [
         {
             heSaid: String,
             he_votes: Number
@@ -19,7 +21,8 @@ const pollSchema = Schema({
             she_votes: Number
         }
     ],
-    is_closed: {type: Boolean, default: false}
+    is_closed: {type: Boolean, default: false},
+    winner: String
      
   });
   

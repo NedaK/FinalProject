@@ -1,27 +1,35 @@
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
+const passport    = require('passport');
 //const mongoose = require("mongoose");
 
 var db = require("../models");
 //const User = mongoose.model("users");
 const keys = require("./keys");
-const opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = keys.secretOrKey;
-module.exports = passport => {
+
+
+// module.exports = passport => {
+  // var passport = require("passport");
+  const opts = {};
+  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+  opts.secretOrKey = keys.secretOrKey;
+  var jwts = function (jwt_payload, done) {
+    console.log("JWT strategy");
+    console.log(jwt_payload);
+    //done();
+    db.User.findById(jwt_payload.id)
+      .then(user => {
+        if (user) {
+          return done(null, user);
+        }
+        return done(null, false);
+      })
+      .catch(err => console.log(err));
+  }
   passport.use(
-    new JwtStrategy(opts, (jwt_payload, done) => {
-      db.User.findById(jwt_payload.id)
-        .then(user => {
-          if (user) {
-            return done(null, user);
-          }
-          return done(null, false);
-        })
-        .catch(err => console.log(err));
-    })
+    new JwtStrategy(opts, jwts)
   );
-};
+  module.exports = passport;
 
 
 
@@ -56,9 +64,7 @@ module.exports = passport => {
 //   }
 // ));
 //
-// In order to help keep authentication state across HTTP requests,
-// Sequelize needs to serialize and deserialize the user
-// Just consider this part boilerplate needed to make it all work
+
 // passport.serializeUser(function(user, cb) {
 //   cb(null, user);
 // });

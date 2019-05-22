@@ -6,10 +6,15 @@ router.route("/")
   .get(pollsController.findAll)
   .post(pollsController.create);
 
+  router.route("/createPoll")
+  .get(pollsController.findAll)
+  .post(pollsController.create);
+
 // Matches with "/api/polls/:id"
 router
   .route("/:id")
-  .get(pollsController.findById)
+  .get(pollsController.findByAuthor)
+  // .get(pollsController.findById)
   .put(pollsController.update)
   .delete(pollsController.remove);
 

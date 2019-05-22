@@ -34,7 +34,13 @@ class Login extends Component{
             email:this.state.email,
             password: this.state.password
           })
-            //.then(res => this.loadBooks())
+            .then(res => {
+              console.log("Data returned from login" + JSON.stringify(res.data));
+
+              this.props.handleLogin(res.data);
+              
+              this.props.history.push('/userhome')
+            })
             .catch(err => console.log(err));
         
       };

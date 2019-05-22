@@ -17,9 +17,20 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
+  findAndPopulate: function(req, res) {
+    console.log("infindandpop" + JSON.stringify(req.body));
     db.User
-      .findById(req.params.id)
+      .findById({_id: req.params.id })
+      .populate("polls")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+
+  findById: function(req, res) {
+    console.log("inid" + JSON.stringify(req.body));
+    db.User
+      .findById({_id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -42,27 +53,31 @@ module.exports = {
             user.comparePassword(password, function(err, isMatch) {
                  if (err) throw err;
                console.log('Password', isMatch); 
-               
+
               if(isMatch){
                 const payload = {
                   id: user.id,
-                  name: user.name
+                  email: user.email
                 }
 
-                jwt.sign(
+                const token = jwt.sign(
                   payload,
                   keys.secretOrKey,
                   {
-                    expiresIn: 31556926 // 1 year in seconds
+                    expiresIn: 3600 // 1 hr in seconds
                   },
                   (err, token) => {
                     res.json({
                       success: true,
-                      token: "Bearer " + token
+                      token:  token,
+                      payload: payload
+
                     });
+                    console.log(token);
                   }
                 );
-                //console.log(token);
+                
+                
               } else {
                 return res.status(400).json({ passwordincorrect: "Password incorrect" });
               }

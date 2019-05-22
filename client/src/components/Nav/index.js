@@ -2,39 +2,54 @@ import React from 'react';
 // import 'bootstrap/dist/css/bootstrap.css';
 import "./style.css";
 import { Link } from "react-router-dom";
+//import UserContext from '../../utils/context';
 
 
 function Nav(props){
-    
+    const {user} = props;
   
     return(
+        // <UserContext.Consumer>
+        //     {(user => 
+                
         <div className = "container">
          <nav className="navbar navbar-expand-lg transparent">
             <h3 className="navbar-brand">He Said<i className="far fa-smile-wink"></i>She Said</h3>
-        
-            <p>{props.user}</p>
+
+            
+            {props.user ? (
+                <p>Welcome, {props.user}
+             <Link to ="/createPoll">Add Poll </Link>
+             <button type="submit" className="btn btn-primary"
+                        
+                        onClick={props.handleLogout}>Logout</button>
+             </p>
+            ) :(
+           
   
         <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
                 <Link to ="/signup">SignUp  </Link>
-                {/* <a className="nav-link" href="#">Sign Up <span className="sr-only">(current)</span></a> */}
+               
             </li>
 
             <li className="nav-item">
                 <Link to ="/login">  Login</Link>
-                {/* <a className="nav-link" href="#">Login</a> */}
+                
             </li>
             
             <li className="nav-item">
                 <Link to ="/userhome">  UserHome</Link>
-                {/* <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> */}
+                
             </li>
         </ul>
+              )}
+             
     {/* </div> */}
     </nav>
     </div>
-    
-    
+          //  )}
+    // </UserContext.Consumer>
 
    ); 
   

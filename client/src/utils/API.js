@@ -27,5 +27,25 @@ export default {
     console.log("In api axios route");
     console.log(userEmail)
     return axios.post("/api/users/login", userEmail);
+  },
+  // getUserPolls: function(id){
+  //   console.log("In api axios route" + id);
+  //   return axios.get("/api/users/" + id);
+  // },
+  getUserPolls: function(authorId){
+    console.log("In api axios route" + authorId);
+    return axios.get("/api/polls/" + authorId);
+  },
+
+  getUserData: function(userID){
+    console.log("In api axios route");
+    console.log(userID)
+    console.log(userID._id)
+    return axios.get("/api/users/login/" + userID);
+  },
+  getProfile: function (token){
+    return axios.get("/api/users/profile", {
+      headers: { Authorization: 'Bearer ' + token }
+    });
   }
 };
