@@ -11,7 +11,8 @@ class CreatePoll extends Component{
         athor:"",
         title: "",
         heSaid: "",
-        sheSaid: ""
+        sheSaid: "",
+        poll_TimeLength:""
     }
 
     handleInputChange = event => {
@@ -28,13 +29,14 @@ class CreatePoll extends Component{
             author: this.props.user.payload.id,
             title:this.state.title,
             heSaid:this.state.heSaid,
-            sheSaid:this.state.sheSaid
+            sheSaid:this.state.sheSaid,
+            poll_TimeLength: this.state.poll_TimeLength
             
           })
             .then(res => {
               console.log("Data returned from created poll" + JSON.stringify(res.data));
               //redirect back to user home page with reload to see new poll in current poll section
-
+              this.props.history.push('/userhome')
             })
             .catch(err => console.log(err));
         
@@ -71,6 +73,13 @@ class CreatePoll extends Component{
                     <input type="text" className="form-control" id="sheSaid" 
                     value={this.state.sheSaid} name="sheSaid"
                     onChange={this.handleInputChange}placeholder="sheSaid" />
+                </div>
+
+                <div className="form-group">
+                    <label>Days of Poll: </label>
+                    <input type="text" className="form-control" id="poll_length" 
+                    value={this.state.poll_TimeLength} name="poll_TimeLength"
+                    onChange={this.handleInputChange}placeholder="Days of Poll" />
                 </div>
 
                 <button type="submit" className="btn btn-primary"

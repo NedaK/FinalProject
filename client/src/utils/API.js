@@ -5,9 +5,12 @@ export default {
   getPolls: function() {
     return axios.get("/api/polls");
   },
-  // Gets the book with the given id
+  // Gets the poll with the given id
   getPoll: function(id) {
     return axios.get("/api/polls/" + id);
+  },
+  updatePoll: function(id, vote){
+    return axios.put("/api/polls/" + id, {vote})
   },
   // Deletes the book with the given id
   deletePoll: function(id) {

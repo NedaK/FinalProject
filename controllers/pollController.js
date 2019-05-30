@@ -3,8 +3,12 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
+    let date = new Date();
+    console.log("In find all polls " + date)
     db.Poll
-      .find(req.query)
+      .find({closing_date:{
+          $gte : date
+      }})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -31,11 +35,14 @@ module.exports = {
       .create(req.body)
       .then(dbModel => 
         db.User.findByIdAndUpdate(dbModel.author, { $push: {polls: dbModel._id} }, {new: true}))
+        .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {        
+  update: function(req, res) { 
+    var vote = req.body.vote;
+    console.log(vote)    
     db.Poll
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id },  { $inc: {[vote]: 1 } }, {new: true })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

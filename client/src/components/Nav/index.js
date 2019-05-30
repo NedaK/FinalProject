@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 
 
 function Nav(props){
-    const {user} = props;
+    // const {user} = props;
+    // console.log(user);
   
     return(
         // <UserContext.Consumer>
@@ -18,12 +19,22 @@ function Nav(props){
 
             
             {props.user ? (
-                <p>Welcome, {props.user}
-             <Link to ="/createPoll">Add Poll </Link>
-             <button type="submit" className="btn btn-primary"
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item active">
+                        Welcome, {props.user}
+                    
+                    </li>
+        
+                    <li className="nav-item">
+                    <Link to ="/createPoll">Add Poll </Link>
                         
-                        onClick={props.handleLogout}>Logout</button>
-             </p>
+                    </li>
+                    <li className="nav-item">
+                    <button type="submit" className="btn btn-primary"
+                        onClick={props.handleLogoutSubmit}>Logout</button>
+                        
+                    </li>
+                </ul>
             ) :(
            
   
@@ -38,10 +49,7 @@ function Nav(props){
                 
             </li>
             
-            <li className="nav-item">
-                <Link to ="/userhome">  UserHome</Link>
-                
-            </li>
+            
         </ul>
               )}
              

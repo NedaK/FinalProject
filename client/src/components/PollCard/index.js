@@ -13,12 +13,13 @@ function PollCard(props){
             
             <p className="card-text">He Said: {props.heSaid}</p>
             <p className="card-text">She Said: {props.sheSaid}</p>
-            <button type="submit" className="btn btn-primary">Vote HeSaid</button>
-            <p className="card-text">HeSaid Vote Number: {props.votes}</p>
-            <button type="submit" className="btn btn-primary">Vote SheSaid</button>
-            <p className="card-text">SheSaid Vote Number: {props.votes}</p>
-            {/* <a href="#" className="card-link">Vote HeSaid</a>
-            <a href="#" className="card-link">Vote SheSaid</a> */}
+            <button type="submit" className="btn btn-primary" onClick = {props.handleVotes} 
+                id={`heSaidVotes_${props.id}`}>Vote HeSaid</button>
+            <p className="card-text">HeSaid Vote Number: {props.heSaidVotes}</p>
+            <button type="submit" className="btn btn-primary" onClick = {props.handleVotes}
+            id={`sheSaidVotes_${props.id}`}>Vote SheSaid</button>
+            <p className="card-text">SheSaid Vote Number: {props.sheSaidVotes}</p>
+            
         </div>
         </div>
     )
