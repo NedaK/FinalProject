@@ -3,11 +3,16 @@ const pollsController = require("../../controllers/pollController");
 
 // Matches with "/api/polls"
 router.route("/")
-  .get(pollsController.findAll)
-  .post(pollsController.create);
+  .get(pollsController.findAllOpen)
+  .post(pollsController.create)
+  .put(pollsController.updateAllClosed);
+
+  router.route("/closed")
+  //.get(pollsController.findAll)
+  .get(pollsController.findAllClosed);  
 
   router.route("/createPoll")
-  .get(pollsController.findAll)
+  //.get(pollsController.findAll)
   .post(pollsController.create);
 
 // Matches with "/api/polls/:id"

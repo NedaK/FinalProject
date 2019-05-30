@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+//Router, Route, Switch,
+import { BrowserRouter as Redirect } from "react-router-dom";
 import Nav from '../components/Nav'
 
 import Wrapper from '../components/Wrapper'
 //import LoginForm from '../components/LoginForm'
-import SignUpForm from '../components/SignUpForm'
+//import SignUpForm from '../components/SignUpForm'
 
 
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 
 

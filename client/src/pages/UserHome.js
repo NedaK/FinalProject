@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 
 
 import Nav from '../components/Nav'
-import Footer from '../components/Footer'
-import Body from '../components/Body'
+//import Footer from '../components/Footer'
+//import Body from '../components/Body'
 import Wrapper from '../components/Wrapper'
 
 
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import PollCard from '../components/PollCard';
 
 
@@ -49,7 +49,7 @@ class UserHome extends Component{
                 })
             });
         });
-            API.getPolls()
+            API.getOpenPolls()
             .then(function(resp){
                 
                 let openPolls = resp.data;
@@ -154,7 +154,7 @@ class UserHome extends Component{
             
                 
             
-            <Footer />
+            {/* <Footer /> */}
             </Wrapper>
         
           

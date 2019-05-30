@@ -16,7 +16,8 @@ function Body(props){
             <h1 className="cover-heading">HE SAID<i className="far fa-smile-wink"></i>SHE SAID</h1>
             <p className="lead">Ever have a dumb argument with a friend, co-worker, or significant other that you need to put to a vote? Then this is the app for you....welcome to He Said/She Said.  Post your arguments,
             and let the community help decide who gets the glory of saying "I told you so!"</p>
-            
+            <button type="submit" className="btn btn-success"
+                    onClick={props.showClosedPolls}>View Completed Polls</button>
             </main>
                 
             

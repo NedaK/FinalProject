@@ -2,21 +2,34 @@ import axios from "axios";
 
 export default {
   // Gets all polls
-  getPolls: function() {
+  // getPolls: function() {
+  //   return axios.get("/api/polls");
+  // },
+
+  getOpenPolls: function() {
     return axios.get("/api/polls");
   },
   // Gets the poll with the given id
   getPoll: function(id) {
     return axios.get("/api/polls/" + id);
   },
-  updatePoll: function(id, vote){
-    return axios.put("/api/polls/" + id, {vote})
+  getClosedPolls: function() {
+    return axios.get("/api/polls/closed/");
   },
-  // Deletes the book with the given id
+  //update closed polls
+  updateClosedPolls: function(){
+    return axios.put("/api/polls/");
+  },
+
+  //update the poll with given id and vote
+  updatePoll: function(id, vote){
+    return axios.put("/api/polls/" + id, {vote});
+  },
+  // Deletes the poll with the given id
   deletePoll: function(id) {
     return axios.delete("/api/polls/" + id);
   },
-  // Saves a book to the database
+  // Saves a pollto the database
   savePoll: function(pollData) {
     return axios.post("/api/polls", pollData);
   },
@@ -31,10 +44,9 @@ export default {
     console.log(userEmail)
     return axios.post("/api/users/login", userEmail);
   },
-  // getUserPolls: function(id){
-  //   console.log("In api axios route" + id);
-  //   return axios.get("/api/users/" + id);
-  // },
+  
+
+  //get all polls by specific user id
   getUserPolls: function(authorId){
     console.log("In api axios route" + authorId);
     return axios.get("/api/polls/" + authorId);

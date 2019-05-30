@@ -8,28 +8,50 @@ import Wrapper from '../components/Wrapper'
 
 
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+//import { threadId } from 'worker_threads';
 
 
 
 class Landing extends Component{
 
     state = {
-        polls: [],
+        closedPolls: [],
 
     }
 
     componentDidMount() {
-        this.loadPolls();
-      }
+        //this.loadPolls();
+        //this.updateClosedPolls();
+      
 
-    loadPolls = () => {
-        API.getPolls()
-          .then(res =>
-            this.setState({ polls: res.data})
-          )
-          .catch(err => console.log(err));
-      };
+     
+       API.updateClosedPolls()
+       .then(res => {
+         console.log(res.data)
+         
+       })
+     
+      }
+    // loadPolls = () => {
+    //     API.getPolls()
+    //       .then(res =>{
+    //         console.log(res.data)
+    //         this.setState({ polls: res.data})
+            
+    //       })
+    //       .catch(err => console.log(err));
+    //   };
+    showClosedPolls = event => {
+      event.preventDefault();
+      API.getClosedPolls()
+      .then((resp) => {
+        console.log(resp.data)
+        this.setState({
+          closedPolls: resp.data
+        })
+      })
+    }
 
     render(){
 
@@ -39,7 +61,7 @@ class Landing extends Component{
         
             <Nav />
                 
-            <Body />
+            <Body showClosedPolls={this.showClosedPolls}/>
             <Footer />
             </Wrapper>
         

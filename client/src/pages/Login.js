@@ -4,11 +4,11 @@ import React, {Component} from 'react';
 import Nav from '../components/Nav'
 
 import Wrapper from '../components/Wrapper'
-import LoginForm from '../components/LoginForm'
+//import LoginForm from '../components/LoginForm'
 
 
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 
 

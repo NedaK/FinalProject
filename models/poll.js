@@ -24,7 +24,7 @@ const pollSchema = Schema({
     //     }
     // ],
     is_closed: {type: Boolean, default: false},
-    winner: String
+    winner: {type: String, default:null}
      
   });
   

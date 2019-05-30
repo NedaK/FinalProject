@@ -1,8 +1,8 @@
 const db = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the pollsController
 module.exports = {
-  findAll: function(req, res) {
+  findAllOpen: function(req, res) {
     let date = new Date();
     console.log("In find all polls " + date)
     db.Poll
@@ -12,6 +12,52 @@ module.exports = {
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  findAllClosed: function(req, res) {
+    db.Poll
+      .find({is_closed: true})
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  updateAllClosed: function(req, res) {
+    let date = new Date();
+    console.log("In find all closed polls " + date)
+    db.Poll
+      .updateMany({closing_date:{
+        $lte : date
+        }},{is_closed: true})
+      //.sort({ date: -1 })
+      .then(db.Poll.find({is_closed: true,winner:{ $ne: null }}, function(err, docs){
+          if (err){
+            console.error(err);
+          }
+          for(i = 0; i< docs.length; i++){
+            var pollWinner= "";
+            var pollId =docs[i]._id
+            //console.log(docs[i].heSaidVotes)
+            //console.log(docs[i].heSaid)
+            if(docs[i].heSaidVotes > docs[i].heSaidVotes){
+              pollWinner = docs[i].heSaid;
+            }
+            else if (docs[i].heSaidVotes < docs[i].heSaidVotes){
+               pollWinner = docs[i].sheSaid;
+            }
+            else if(docs[i].heSaidVotes === docs[i].sheSaidVotes){
+               pollWinner = "TIE!"
+            }
+            console.log(pollWinner + pollId);
+            db.Poll.findOneAndUpdate({_id:pollId},{ $set:{winner: pollWinner}})
+            //.then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+          }
+
+
+      }))
+        
+        //   .then(dbModel => res.json(dbModel))
+
+        .catch(err => res.status(422).json(err));
   },
   findByAuthor: function(req, res) {
     const authid = "ObjectId("+req.params.id +")"
