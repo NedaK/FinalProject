@@ -37,7 +37,7 @@ export default {
   saveUser: function(userData) {
     console.log("In api axios route");
     console.log(userData)
-    return axios.post("/api/users", userData);
+    return axios.post("/api/users/signup", userData);
   },
   findUser: function(userEmail) {
     console.log("In api axios route");

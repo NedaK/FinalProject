@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 //Router, Route, Switch,
-import { BrowserRouter as Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,Redirect } from "react-router-dom";
 import Nav from '../components/Nav'
 
 import Wrapper from '../components/Wrapper'
-//import LoginForm from '../components/LoginForm'
-//import SignUpForm from '../components/SignUpForm'
+import LoginForm from '../components/LoginForm'
+import SignUpForm from '../components/SignUpForm'
 
 
 import API from "../utils/API";
@@ -38,9 +38,9 @@ class SignUp extends Component{
     // }
   }
 
-  loadBooks = () =>{
-    console.log("made it here")
-  }
+  // loadBooks = () =>{
+  //   console.log("made it here")
+  // }
   
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -63,7 +63,10 @@ class SignUp extends Component{
         
       })
         //how to to alert user if error, but redirect if success....
-        .then(res => this.setRedirect())
+        .then(res =>
+          this.setRedirect()
+          //console.log(res)
+          )
         //maybe display something to show the user sign up was successful
         .catch(err => console.log(err));
         

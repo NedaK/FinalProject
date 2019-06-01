@@ -20,6 +20,8 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+
   updateAllClosed: function(req, res) {
     let date = new Date();
     console.log("In find all closed polls " + date)
@@ -28,22 +30,26 @@ module.exports = {
         $lte : date
         }},{is_closed: true})
       //.sort({ date: -1 })
-      .then(db.Poll.find({is_closed: true,winner:{ $ne: null }}, function(err, docs){
+      //winner:{ $ne: null }
+      .then(db.Poll.find({is_closed: true}, function(err, docs){
+          console.log( "setting winner " + docs);
           if (err){
             console.error(err);
           }
           for(i = 0; i< docs.length; i++){
             var pollWinner= "";
             var pollId =docs[i]._id
+            var he = parseInt(docs[i].heSaidVotes)
+            var she = parseInt(docs[i].sheSaidVotes)
             //console.log(docs[i].heSaidVotes)
             //console.log(docs[i].heSaid)
-            if(docs[i].heSaidVotes > docs[i].heSaidVotes){
-              pollWinner = docs[i].heSaid;
+            if(he > she){
+              pollWinner = he;
             }
-            else if (docs[i].heSaidVotes < docs[i].heSaidVotes){
-               pollWinner = docs[i].sheSaid;
+            else if (he < she){
+               pollWinner = she;
             }
-            else if(docs[i].heSaidVotes === docs[i].sheSaidVotes){
+            else if(he === she){
                pollWinner = "TIE!"
             }
             console.log(pollWinner + pollId);

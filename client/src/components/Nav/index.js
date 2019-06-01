@@ -30,7 +30,7 @@ function Nav(props){
                         
                     </li>
                     <li className="nav-item">
-                    <button type="submit" className="btn btn-primary"
+                    <button type="submit" className="btn btn-success"
                         onClick={props.handleLogoutSubmit}>Logout</button>
                         
                     </li>

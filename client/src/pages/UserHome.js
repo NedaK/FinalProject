@@ -76,10 +76,10 @@ class UserHome extends Component{
         // console.log(votePoint[0])
         API.updatePoll(votePoint[1], votePoint[0])
         .then((resp)=>{
-            //this.forceUpdate();
+            
             console.log(resp.data._id)
 
-            //myArray.map(x => x.hello).indexOf('stevie')
+            
             const index = this.state.trendingPolls.map(poll => poll._id).indexOf(resp.data._id)
             //const index = this.state.trendingPolls.indexOf(resp.data._id);
             console.log(index)
@@ -102,6 +102,16 @@ class UserHome extends Component{
 
     }
 
+    setWinnerOrTimeRemaining = (closingDate) =>{
+        console.log(Date.parse(closingDate))
+        let today = Date.now();
+        let closing = Date.parse(closingDate)
+        console.log(today)
+        let hoursRemaining = Math.floor((closing - today) / 36e5)
+        console.log(hoursRemaining);
+        return hoursRemaining + " hours"
+        //(1000*60*60*24)
+    }
 
 
     render(){
@@ -112,20 +122,18 @@ class UserHome extends Component{
         
             <Nav user={this.props.user.payload.email} 
                 handleLogoutSubmit={this.handleLogoutSubmit}/>
-                {/* <div>
-                <button type="submit" className="btn btn-primary"
-                        
-                        onClick={this.handleLogoutSubmit}>Logout</button>
-                </div> */}
+                
             <div className="container">
                 <div id="current-items">
                 <h3>Current Polls</h3>
                 {this.state.polls.length > 0 ?(
                     this.state.polls.map(object => (
-                     <PollCard title={object.title} key={object._id}
-                     id={object._id} handleVotes = {this.handleVotes}
+                     <PollCard title={object.title} key={object._id} author = {object.author}
+                     user={this.props.user.payload.id} id={object._id} handleVotes = {this.handleVotes}
                      heSaid = {object.heSaid} heSaidVotes = {object.heSaidVotes}
                      sheSaid = {object.sheSaid} sheSaidVotes = {object.sheSaidVotes}
+                     closed = {object.is_closed} winner = {object.winner} 
+                     remaining = {this.setWinnerOrTimeRemaining(object.closing_date)}
                      />))
                 ) : null }
                 
@@ -140,9 +148,11 @@ class UserHome extends Component{
                 {this.state.trendingPolls.length > 0 ?(
                     this.state.trendingPolls.map(object => (
                      <PollCard handleVotes= {this.handleVotes} title={object.title} key={object._id}
-                     id={object._id}
+                     id={object._id} author = {object.author} user={this.props.user.payload.id}
                      heSaid = {object.heSaid} heSaidVotes = {object.heSaidVotes}
                      sheSaid = {object.sheSaid} sheSaidVotes = {object.sheSaidVotes}
+                     closed = {object.is_closed} winner = {object.winner}
+                     remaining = {this.setWinnerOrTimeRemaining(object.closing_date)}
                      />))
                 ) : null }
 
