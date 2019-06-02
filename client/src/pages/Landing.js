@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import "./style.css";
 import { Col, Row, Container } from "../components/Grid";
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
@@ -65,8 +65,16 @@ class Landing extends Component{
             
            <Body showClosedPolls={this.showClosedPolls} />
               {this.state.closedPolls.length > 0 ?(
-               
-                this.state.closedPolls.map(object =>(
+               <div className= "closedPolls">
+               <table className = "table">
+                 <tbody>
+                 <tr>
+                    <th>Title</th>
+                    <th>He Said</th> 
+                    <th>She Said</th>
+                    <th>Winner</th>
+                  </tr>
+                        {this.state.closedPolls.map(object =>(
                   <Table 
                     key={object._id}
                     title = {object.title}
@@ -74,11 +82,12 @@ class Landing extends Component{
                     sheSaid = {object.sheSaid}
                     winner = {object.winner}
                   
-                />))
+                />
+                )) }</tbody></table>  </div> 
               
               ): null}
                     
-                    
+               
               
             
             <Footer />

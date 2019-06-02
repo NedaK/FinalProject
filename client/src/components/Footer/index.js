@@ -8,8 +8,8 @@ function Footer(props){
     return(
         <div className="container"> 
         <nav className="navbar navbar-expand-lg fixed-bottom">
-        <p>* Although this app is titiled He Said/She Said, it by no means is genderizing or stereotying users or their arguments.
-        When submitting a topic to vote on, you can select he, she, or ze pronouns for either side of the argument.
+        <p>* Although this app is titiled He Said/She Said, it by no means is genderizing or stereotying users or their arguments.**
+        
         </p>
         </nav>
         

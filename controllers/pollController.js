@@ -44,10 +44,11 @@ module.exports = {
             //console.log(docs[i].heSaidVotes)
             //console.log(docs[i].heSaid)
             if(he > she){
-              pollWinner = he;
+              pollWinner = `HeSaid - ${docs[i].heSaid} - ${docs[i].heSaidVotes} Votes`;
             }
             else if (he < she){
-               pollWinner = she;
+              pollWinner = `SheSaid - ${docs[i].sheSaid} - ${docs[i].sheSaidVotes} Votes`;
+               
             }
             else if(he === she){
                pollWinner = "TIE!"

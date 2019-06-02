@@ -15,8 +15,9 @@ function Nav(props){
                 
         <div className = "container">
          <nav className="navbar navbar-expand-lg transparent">
+             <Link to="/">
             <h3 className="navbar-brand">He Said<i className="far fa-smile-wink"></i>She Said</h3>
-
+            </Link>
             
             {props.user ? (
                 <ul className="navbar-nav ml-auto">
@@ -26,8 +27,10 @@ function Nav(props){
                     </li>
         
                     <li className="nav-item">
-                    <Link to ="/createPoll">Add Poll </Link>
-                        
+                    <Link to ="/createPoll">
+                    <button type="submit" className="btn btn-success">Add Poll</button>
+                    {/* <Link to ="/createPoll">Add Poll </Link> */}
+                    </Link>
                     </li>
                     <li className="nav-item">
                     <button type="submit" className="btn btn-success"
@@ -40,12 +43,18 @@ function Nav(props){
   
         <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
-                <Link to ="/signup">SignUp  </Link>
+            <Link to ="/signup">
+            <button type="submit" className="btn btn-success">Sign Up</button>
+            </Link>
+                {/* <Link to ="/signup">SignUp  </Link> */}
                
             </li>
 
             <li className="nav-item">
-                <Link to ="/login">  Login</Link>
+            <Link to ="/login">
+            <button type="submit" className="btn btn-success">Login</button>
+            </Link>
+                {/* <Link to ="/login">  Login</Link> */}
                 
             </li>
             

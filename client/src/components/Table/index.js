@@ -7,17 +7,17 @@ import "./style.css";
 
 function Table(props){
     return(
-        <table>
-            <caption>Check out these Closed Polls!</caption>
-            <tbody>
+        // <table>
+        //     <caption>Check out these Closed Polls!</caption>
+        //     <tbody>
             <tr>
-                <td>Title: {props.title}</td>
-                <td>HeSaid: {props.heSaid}</td>
-                <td>SheSaid: {props.sheSaid}</td>
-                <td>Winner: {props.winner}</td>
+                <td>{props.title}</td>
+                <td>{props.heSaid}</td>
+                <td>{props.sheSaid}</td>
+                <td>{props.winner}</td>
             </tr>
-            </tbody>
-        </table>
+        //     </tbody>
+        // </table>
     )
 
 

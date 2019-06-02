@@ -123,9 +123,10 @@ class UserHome extends Component{
             <Nav user={this.props.user.payload.email} 
                 handleLogoutSubmit={this.handleLogoutSubmit}/>
                 
-            <div className="container">
-                <div id="current-items">
-                <h3>Current Polls</h3>
+            <div className="container-fluid">
+            <h3>Current Polls</h3>
+                <div className = "card-deck" id="current-items">
+                
                 {this.state.polls.length > 0 ?(
                     this.state.polls.map(object => (
                      <PollCard title={object.title} key={object._id} author = {object.author}
@@ -142,9 +143,10 @@ class UserHome extends Component{
             
             </div>
 
-            <div className="container">
-                <div id="trending-items">
-                <h3>Trending Polls</h3>
+            <div className="container-fluid">
+            <h3>Trending Polls</h3>
+                <div className = "card-deck" id="trending-items">
+                
                 {this.state.trendingPolls.length > 0 ?(
                     this.state.trendingPolls.map(object => (
                      <PollCard handleVotes= {this.handleVotes} title={object.title} key={object._id}

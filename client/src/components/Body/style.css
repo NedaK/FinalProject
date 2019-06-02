@@ -8,6 +8,7 @@
     padding: 20px; 
     margin-top: 7rem;
     margin-bottom: auto;
+    text-align: center;
 
     
   }
@@ -21,4 +22,8 @@
 
 .closedPolls{
   background: #f1f1f1;
+}
+button {
+  margin:0 auto;
+  display:block;
 }
