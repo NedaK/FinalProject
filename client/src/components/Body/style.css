@@ -9,6 +9,7 @@
     margin-top: 7rem;
     margin-bottom: auto;
     text-align: center;
+    font-family: 'Poppins', 'sans-serif';
 
     
   }
@@ -20,10 +21,13 @@
 
 }
 
-.closedPolls{
+/* .closedPolls{
   background: #f1f1f1;
-}
+} */
 button {
   margin:0 auto;
   display:block;
+  /* font-family: 'Modak', cursive; */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
 }

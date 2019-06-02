@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-
+import { Parallax, Background } from 'react-parallax';
 import Nav from '../components/Nav'
 //import Footer from '../components/Footer'
 //import Body from '../components/Body'
@@ -122,9 +122,18 @@ class UserHome extends Component{
         
             <Nav user={this.props.user.payload.email} 
                 handleLogoutSubmit={this.handleLogoutSubmit}/>
-                
-            <div className="container-fluid">
-            <h3>Current Polls</h3>
+
+        <div style={{ height: '200px' }} />
+
+        <Parallax
+            blur={7}
+            
+            style = {{backgroundColor:'rgb(0,0,0,0.5)'}}
+            
+            strength={200}
+        >
+             <div className="container" >
+                <h2>Current Polls</h2>
                 <div className = "card-deck" id="current-items">
                 
                 {this.state.polls.length > 0 ?(
@@ -142,9 +151,21 @@ class UserHome extends Component{
                 </div>
             
             </div>
+            <div style={{ height: '150px' }} />
+            </Parallax>
+                
+           
 
-            <div className="container-fluid">
-            <h3>Trending Polls</h3>
+            <div style={{ height: '150px' }} />
+            <Parallax
+            blur={10}
+            style = {{backgroundColor:'rgb(0,0,0,0.6)'}}
+            // bgImage={require('../images/wall.jpeg')}
+           
+            strength={200}
+        >
+            <div className="container">
+            <h2>Trending Polls</h2>
                 <div className = "card-deck" id="trending-items">
                 
                 {this.state.trendingPolls.length > 0 ?(
@@ -163,8 +184,9 @@ class UserHome extends Component{
                 </div>
             
             </div>
-            
-                
+            <div style={{ height: '150px' }} />
+                </Parallax>
+                <div style={{ height: '150px' }} />
             
             {/* <Footer /> */}
             </Wrapper>

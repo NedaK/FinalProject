@@ -19,7 +19,7 @@ function Body(props){
                     onClick={props.showClosedPolls}>View Completed Polls</button>
             </main>
 
-            <div className="closedPolls">
+            <div className="closedPolls h-100">
                 
               </div>
                 

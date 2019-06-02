@@ -13,19 +13,21 @@ function Nav(props){
         // <UserContext.Consumer>
         //     {(user => 
                 
-        <div className = "container">
-         <nav className="navbar navbar-expand-lg transparent">
+        
+         <nav className="navbar navbar-expand-md transparent">
              <Link to="/">
             <h3 className="navbar-brand">He Said<i className="far fa-smile-wink"></i>She Said</h3>
             </Link>
             
             {props.user ? (
+                
+                
                 <ul className="navbar-nav ml-auto">
-                    <li className="nav-item active">
+                   
+                     <li className="nav-item active">
                         Welcome, {props.user}
                     
                     </li>
-        
                     <li className="nav-item">
                     <Link to ="/createPoll">
                     <button type="submit" className="btn btn-success">Add Poll</button>
@@ -38,11 +40,12 @@ function Nav(props){
                         
                     </li>
                 </ul>
+                
             ) :(
            
   
         <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
+            <li className="nav-item">
             <Link to ="/signup">
             <button type="submit" className="btn btn-success">Sign Up</button>
             </Link>
@@ -64,7 +67,7 @@ function Nav(props){
              
     {/* </div> */}
     </nav>
-    </div>
+    
           //  )}
     // </UserContext.Consumer>
 

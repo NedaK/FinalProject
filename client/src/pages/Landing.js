@@ -13,6 +13,9 @@ import API from "../utils/API";
 //import { Link } from "react-router-dom";
 //import { threadId } from 'worker_threads';
 
+import Scrollspy from 'react-scrollspy'
+ 
+ 
 
 
 class Landing extends Component{
@@ -23,11 +26,7 @@ class Landing extends Component{
     }
 
     componentDidMount() {
-        //this.loadPolls();
-        //this.updateClosedPolls();
-      
-
-     
+        
        API.updateClosedPolls()
        .then(res => {
          console.log(res.data)
@@ -35,15 +34,7 @@ class Landing extends Component{
        })
      
       }
-    // loadPolls = () => {
-    //     API.getPolls()
-    //       .then(res =>{
-    //         console.log(res.data)
-    //         this.setState({ polls: res.data})
-            
-    //       })
-    //       .catch(err => console.log(err));
-    //   };
+    
     showClosedPolls = event => {
       event.preventDefault();
       API.getClosedPolls()
@@ -59,13 +50,27 @@ class Landing extends Component{
 
   
         return (
-            //  <Wrapper>
-        <Container fluid>
+             <Wrapper>
+        {/* <Container fluid> */}
             <Nav />
             
+ 
+  {/* <div style={{ height: '100px' }}></div> */}
+            
+ 
+  <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current">
+    <li><a href="#section-1">section 1</a></li>
+    
+  </Scrollspy>
+ 
+
+
+            
            <Body showClosedPolls={this.showClosedPolls} />
+           <div style={{ height: '250px' }}></div>
               {this.state.closedPolls.length > 0 ?(
-               <div className= "closedPolls">
+               <div className= "closedPolls" id="section-1">
+                 
                <table className = "table">
                  <tbody>
                  <tr>
@@ -83,7 +88,7 @@ class Landing extends Component{
                     winner = {object.winner}
                   
                 />
-                )) }</tbody></table>  </div> 
+                )) }</tbody></table></div> 
               
               ): null}
                     
@@ -91,9 +96,14 @@ class Landing extends Component{
               
             
             <Footer />
+            <div style={{ height: '250px' }}></div>
+            <div style={{ height: '250px' }}></div>
+            <div style={{ height: '250px' }}></div>
+            <div style={{ height: '250px' }}></div>
+            
 
-            </Container>
-            // </Wrapper>
+            {/* </Container> */}
+            </Wrapper>
         
           
         

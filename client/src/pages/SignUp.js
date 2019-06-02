@@ -113,13 +113,7 @@ class SignUp extends Component{
                 name="last" aria-describedby="lastName" placeholder="Enter Last Name" />
                 </div>
 
-                {/* <div className="form-group">
-                <label>UserName</label>
-                <input type="text" className="form-control" id="UserName" 
-                value={this.state.user}
-                onChange={this.handleInputChange}
-                name="user" aria-describedby="userName" placeholder="Enter a username" />
-                </div> */}
+                
 
                 <div className="form-group">
                 <label>Password</label>
