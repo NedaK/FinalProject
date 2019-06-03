@@ -27,7 +27,7 @@ function PollCard(props){
                 <button type="submit" className="btn btn-success" onClick = {props.handleVotes}
                 id={`sheSaidVotes_${props.id}`}>Vote SheSaid</button>
                 
-                <div class="card-footer">Time remaining : {props.remaining} </div>
+                <div className="card-footer">Time remaining : {props.remaining} </div>
                 {/* <p>Time remaining : {props.remaining} </p> */}
                 
             </div>
@@ -48,7 +48,7 @@ function PollCard(props){
                         <p className="card-text">HeSaid Vote Number: {props.heSaidVotes}</p>
                         
                         <p className="card-text">SheSaid Vote Number: {props.sheSaidVotes}</p>
-                        <div class="card-footer">Winner: {props.winner}</div>
+                        <div className="card-footer">Winner: {props.winner}</div>
                         {/* <p className="card-text">Winner: {props.winner}</p> */}
                         {/* <p>Time remaining : {props.remaining} </p> */}
                         
@@ -71,7 +71,7 @@ function PollCard(props){
                     <p className="card-text">SheSaid Vote Number: {props.sheSaidVotes}</p>
     
                     {/* <p className="card-text">Winner: {props.winner}</p> */}
-                    <div class="card-footer">Time remaining : {props.remaining} </div>
+                    <div className="card-footer">Time remaining : {props.remaining} </div>
                     {/* <p>Time remaining : {props.remaining} </p> */}
                     
                     

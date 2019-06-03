@@ -2,6 +2,7 @@ const db = require("../models");
 
 // Defining methods for the pollsController
 module.exports = {
+
   findAllOpen: function(req, res) {
     let date = new Date();
     console.log("In find all polls " + date)
@@ -13,6 +14,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   findAllClosed: function(req, res) {
     db.Poll
       .find({is_closed: true})
@@ -21,10 +23,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-
+//updates polls that needs to be closed, and sets the winner on closed polls
   updateAllClosed: function(req, res) {
     let date = new Date();
-    console.log("In find all closed polls " + date)
+    console.log("In update all closed polls " + date)
     db.Poll
       .updateMany({closing_date:{
         $lte : date
@@ -66,14 +68,18 @@ module.exports = {
 
         .catch(err => res.status(422).json(err));
   },
+
+
   findByAuthor: function(req, res) {
-    const authid = "ObjectId("+req.params.id +")"
+    //const authid = "ObjectId("+req.params.id +")"
     console.log("In findByAuth" + req.params.id)
     db.Poll
       .find({author: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+
   findById: function(req, res) {
     db.Poll
       .findById(req.params.id)

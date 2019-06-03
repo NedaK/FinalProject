@@ -36,7 +36,8 @@ class UserHome extends Component{
                     }            
             console.log("Props passes down" + JSON.stringify(this.state.user));
 
-            API.getUserPolls(this.state.user.payload.id)
+            // API.getUserPolls(this.state.user.payload.id)
+            API.getUserPolls(this.state.user)
             .then(function(res) {
                 console.log("Resp" + JSON.stringify(res.data));
                 let userPolls = res.data;
@@ -72,9 +73,10 @@ class UserHome extends Component{
         event.preventDefault();
         const pollID = event.target.id;
         const votePoint = pollID.split("_");
+        const token = this.state.user.token;
         // console.log(pollID)
         // console.log(votePoint[0])
-        API.updatePoll(votePoint[1], votePoint[0])
+        API.updatePoll(votePoint[1], votePoint[0], token)
         .then((resp)=>{
             
             console.log(resp.data._id)

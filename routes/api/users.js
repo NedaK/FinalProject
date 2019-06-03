@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/userController");
-const passport = require("passport")
+// const passport = require("passport")
+const passport = require("../../config/passport")
 
 // Matches with "/api/users"
 router.route("/signup")
@@ -30,7 +31,8 @@ router
 
    router
     .route("/userhome")
-    .get(usersController.findById);
+    .get(passport.authenticate('jwt', { session : false }), usersController.findById);
+    // .get(usersController.findById);
 
 
     router

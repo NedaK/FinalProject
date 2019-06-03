@@ -22,16 +22,23 @@ export default {
   },
 
   //update the poll with given id and vote
-  updatePoll: function(id, vote){
-    return axios.put("/api/polls/" + id, {vote});
+  updatePoll: function(id, vote, token){
+    return axios.put("/api/polls/" + id, {vote}, {
+      headers: {
+        'Authorization': token
+      }
+    });
   },
   // Deletes the poll with the given id
   deletePoll: function(id) {
     return axios.delete("/api/polls/" + id);
   },
-  // Saves a pollto the database
+  // Saves a poll to the database
   savePoll: function(pollData) {
-    return axios.post("/api/polls", pollData);
+    return axios.post("/api/polls", pollData ,{
+      headers: {
+        'Authorization': pollData.token
+      }});
   },
 
   saveUser: function(userData) {
@@ -48,8 +55,12 @@ export default {
 
   //get all polls by specific user id
   getUserPolls: function(authorId){
-    console.log("In api axios route" + authorId);
-    return axios.get("/api/polls/" + authorId);
+    console.log("In api get user pollsaxios route " + authorId);
+    return axios.get("/api/polls/" + authorId.payload.id, {
+      headers: {
+        'Authorization': authorId.token
+      }
+    });
   },
 
   getUserData: function(userID){
@@ -58,9 +69,9 @@ export default {
     console.log(userID._id)
     return axios.get("/api/users/login/" + userID);
   },
-  getProfile: function (token){
-    return axios.get("/api/users/profile", {
-      headers: { Authorization: 'Bearer ' + token }
-    });
-  }
+  // getProfile: function (token){
+  //   return axios.get("/api/users/profile", {
+  //     headers: { Authorization: 'Bearer ' + token }
+  //   });
+  // }
 };

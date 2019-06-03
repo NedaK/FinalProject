@@ -20,8 +20,11 @@ const keys = require("./keys");
     db.User.findById(jwt_payload.id)
       .then(user => {
         if (user) {
+          console.log("Valid")
           return done(null, user);
+          
         }
+        console.log("not valid")
         return done(null, false);
       })
       .catch(err => console.log(err));

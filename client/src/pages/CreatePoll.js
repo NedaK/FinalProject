@@ -12,7 +12,8 @@ class CreatePoll extends Component{
         title: "",
         heSaid: "",
         sheSaid: "",
-        poll_TimeLength:""
+        poll_TimeLength:"",
+        
     }
 
     handleInputChange = event => {
@@ -26,6 +27,7 @@ class CreatePoll extends Component{
         event.preventDefault();
         
           API.savePoll({
+            token: this.props.user.token,
             author: this.props.user.payload.id,
             title:this.state.title,
             heSaid:this.state.heSaid,

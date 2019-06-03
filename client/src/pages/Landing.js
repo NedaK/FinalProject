@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import "./style.css";
-import { Col, Row, Container } from "../components/Grid";
+//import { Col, Row, Container } from "../components/Grid";
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Body from '../components/Body'
@@ -28,6 +28,8 @@ class Landing extends Component{
     componentDidMount() {
         
        API.updateClosedPolls()
+
+      //  figure out how to handle this error and response
        .then(res => {
          console.log(res.data)
          

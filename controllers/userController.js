@@ -69,7 +69,7 @@ module.exports = {
                   (err, token) => {
                     res.json({
                       success: true,
-                      token:  token,
+                      token:  "Bearer " + token,
                       payload: payload
 
                     });

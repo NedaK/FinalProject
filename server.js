@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 // )
 app.use(passport.initialize());
 // Passport config
-require("./config/passport") //(passport);
+require("./config/passport");
  
 //app.use(passport.session()); 
 
