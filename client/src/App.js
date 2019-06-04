@@ -4,7 +4,7 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import UserHome from "./pages/UserHome";
-import CreatePoll from "./pages/CreatePoll";
+import ManagePolls from "./pages/ManagePolls";
 //import UserContext from "./utils/context";
 
 // import { Provider } from "react-redux";
@@ -46,7 +46,7 @@ class App extends React.Component{
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" render={(props) => <Login {...props} handleLogin={this.handleLogin} user={this.state.user}/>} />
             <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/createPoll" render={(props) => <CreatePoll {...props} user={this.state.user} />} />
+            <Route exact path="/managePolls" render={(props) => <ManagePolls {...props} user={this.state.user} handleLogout={this.handleLogout} />} />
             <Route exact path="/userhome" render={(props) => <UserHome {...props} handleLogout={this.handleLogout} user={this.state.user} />} />
             {/* <Route exact path="/books/:id" component={Detail} />
             <Route component={NoMatch} /> */}

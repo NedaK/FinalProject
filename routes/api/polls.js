@@ -6,14 +6,14 @@ const passport = require("../../config/passport")
 // Matches with "/api/polls"
 router.route("/")
   .get(pollsController.findAllOpen)
-  .post(pollsController.create)
+  // .post(pollsController.create)
   .put(pollsController.updateAllClosed);
 
   router.route("/closed")
   //.get(pollsController.findAll)
   .get(pollsController.findAllClosed);  
 
-  router.route("/createPoll")
+  router.route("/managePolls")
   //.get(pollsController.findAll)
   .post(passport.authenticate('jwt', { session : false }), pollsController.create);
   // .post(pollsController.create);
@@ -25,6 +25,6 @@ router
   // .get(pollsController.findByAuthor)
   // .get(pollsController.findById)
   .put(passport.authenticate('jwt', { session : false }),pollsController.update)
-  .delete(pollsController.remove);
+  .delete(passport.authenticate('jwt', { session : false }),pollsController.remove);
 
 module.exports = router;

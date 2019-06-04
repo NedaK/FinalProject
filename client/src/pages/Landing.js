@@ -53,7 +53,7 @@ class Landing extends Component{
   
         return (
              <Wrapper>
-        {/* <Container fluid> */}
+        
             <Nav />
             
  
@@ -104,7 +104,6 @@ class Landing extends Component{
             <div style={{ height: '250px' }}></div>
             
 
-            {/* </Container> */}
             </Wrapper>
         
           

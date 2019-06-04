@@ -30,12 +30,15 @@ export default {
     });
   },
   // Deletes the poll with the given id
-  deletePoll: function(id) {
-    return axios.delete("/api/polls/" + id);
+  deletePoll: function(id, token) {
+    return axios.delete("/api/polls/" + id,{
+      headers: {
+        'Authorization': token
+      }});
   },
   // Saves a poll to the database
   savePoll: function(pollData) {
-    return axios.post("/api/polls", pollData ,{
+    return axios.post("/api/polls/managePolls", pollData ,{
       headers: {
         'Authorization': pollData.token
       }});

@@ -2,18 +2,31 @@ import React, {Component} from 'react';
 
 //import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Nav from '../components/Nav'
+import Table from '../components/Table'
 
 import Wrapper from '../components/Wrapper'
 import API from "../utils/API";
 
-class CreatePoll extends Component{
+class ManagePolls extends Component{
     state = {
         athor:"",
         title: "",
         heSaid: "",
         sheSaid: "",
         poll_TimeLength:"",
+        userPolls:[],
+        page:"managePolls"
         
+    }
+    componentDidMount(){
+console.log("PAge" + this.state.page)
+      API.getUserPolls(this.props.user)
+      .then((resp)=>{     
+        this.setState({
+          userPolls: resp.data,
+          //page: "managePolls"
+        })
+      })
     }
 
     handleInputChange = event => {
@@ -44,21 +57,43 @@ class CreatePoll extends Component{
         
       };
 
+      handleDelete = (id) =>{
+        const token = this.props.user.token;
+        console.log("Delete token" + this.props.user.token)
+        console.log(id)
+        API.deletePoll(id, token)
+        .then( res =>{
+          console.log("Returned from delete poll" +  JSON.stringify(res.data));
+          this.props.history.push('/userhome')
+        })
+        .catch(err => console.log(err));
+      }
+
+      handleLogoutSubmit = event  =>{
+        event.preventDefault();
+        this.props.handleLogout();
+              
+        this.props.history.push('/')
+
+    }
+
 
     render(){
     return (
     <Wrapper>
-    <Nav />
+    <Nav user={this.props.user.payload.email} page={this.state.page}
+    handleLogoutSubmit={this.handleLogoutSubmit}/>
 
     <div className="container">
     <div className="row">
         <div className="col-3"></div>
         <div className="col-6 mx-auto" id="login">
+          <h2>Create a New Poll</h2>
             <form id="login-form" >
                 <div className="form-group">
                     <label>Poll Title</label>
-                    <input type="email" className="form-control" id="title" 
-                        value={this.state.email} name="title"
+                    <input type="text" className="form-control" id="title" 
+                        value={this.state.title} name="title"
                         onChange={this.handleInputChange} aria-describedby="pollTitle" placeholder="Enter title" />
                     
                 </div>
@@ -91,6 +126,37 @@ class CreatePoll extends Component{
         </div>
         <div className="col-3"></div>      
     </div>
+    <div style={{ height: '250px' }}></div>
+          {this.state.userPolls.length > 0 ?(
+               <div className= "userPolls">
+                 
+               <table className = "table">
+                 <tbody>
+                 <tr>
+                    <th>Title</th>
+                    <th>He Said</th> 
+                    <th>She Said</th>
+                    <th>Winner</th>
+                    <th>Delete?</th>
+                  </tr>
+                        {this.state.userPolls.map(object =>(
+                  <Table 
+                    key={object._id}
+                    title = {object.title}
+                    heSaid = {object.heSaid}
+                    sheSaid = {object.sheSaid}
+                    winner = {object.winner}
+                    id={object._id}
+                    handleDelete = {this.handleDelete}
+                  
+                />
+                )) }</tbody></table></div> 
+              
+              ): null}
+                    
+               
+              
+
 </div>
 
     
@@ -103,5 +169,5 @@ class CreatePoll extends Component{
   );
 }
 }
-export default CreatePoll;
+export default ManagePolls;
 

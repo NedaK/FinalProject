@@ -8,29 +8,28 @@ import { Link } from "react-router-dom";
 function Nav(props){
     // const {user} = props;
     // console.log(user);
+
   
     return(
-        // <UserContext.Consumer>
-        //     {(user => 
-                
         
          <nav className="navbar navbar-expand-md transparent">
              <Link to="/">
             <h3 className="navbar-brand">He Said<i className="far fa-smile-wink"></i>She Said</h3>
             </Link>
+           
             
-            {props.user ? (
-                
+            {props.user && props.page ? (
                 
                 <ul className="navbar-nav ml-auto">
                    
                      <li className="nav-item active">
-                        Welcome, {props.user}
+                        Welcome, {props.user} 
                     
                     </li>
+
                     <li className="nav-item">
-                    <Link to ="/createPoll">
-                    <button type="submit" className="btn btn-success">Add Poll</button>
+                    <Link to ="/userHome">
+                    <button type="submit" className="btn btn-success">Back to User Home</button>
                     {/* <Link to ="/createPoll">Add Poll </Link> */}
                     </Link>
                     </li>
@@ -41,9 +40,28 @@ function Nav(props){
                     </li>
                 </ul>
                 
-            ) :(
-           
-  
+            ): props.user ?(
+                <ul className="navbar-nav ml-auto">
+                   
+                     <li className="nav-item active">
+                        Welcome, {props.user} 
+                    
+                    </li>
+
+                    <li className="nav-item">
+                    <Link to ="/managePolls">
+                    <button type="submit" className="btn btn-success">Manage Polls</button>
+                    {/* <Link to ="/createPoll">Add Poll </Link> */}
+                    </Link>
+                    </li>
+                    <li className="nav-item">
+                    <button type="submit" className="btn btn-success"
+                        onClick={props.handleLogoutSubmit}>Logout</button>
+                        
+                    </li>
+                </ul>
+                
+            ):(
         <ul className="navbar-nav ml-auto">
             <li className="nav-item">
             <Link to ="/signup">
@@ -65,11 +83,10 @@ function Nav(props){
         </ul>
               )}
              
-    {/* </div> */}
+   
     </nav>
     
-          //  )}
-    // </UserContext.Consumer>
+         
 
    ); 
   

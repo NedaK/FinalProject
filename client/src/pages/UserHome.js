@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import { Parallax, Background } from 'react-parallax';
 import Nav from '../components/Nav'
 //import Footer from '../components/Footer'
-//import Body from '../components/Body'
+import DeleteBtn from '../components/DeleteBtn'
 import Wrapper from '../components/Wrapper'
 
 
@@ -95,6 +95,7 @@ class UserHome extends Component{
         })
 
     }
+    
 
     handleLogoutSubmit = event  =>{
         event.preventDefault();
@@ -135,7 +136,7 @@ class UserHome extends Component{
             strength={200}
         >
              <div className="container" >
-                <h2>Current Polls</h2>
+                <h2>Your Current Polls</h2>
                 <div className = "card-deck" id="current-items">
                 
                 {this.state.polls.length > 0 ?(
@@ -145,8 +146,13 @@ class UserHome extends Component{
                      heSaid = {object.heSaid} heSaidVotes = {object.heSaidVotes}
                      sheSaid = {object.sheSaid} sheSaidVotes = {object.sheSaidVotes}
                      closed = {object.is_closed} winner = {object.winner} 
-                     remaining = {this.setWinnerOrTimeRemaining(object.closing_date)}
-                     />))
+                     remaining = {this.setWinnerOrTimeRemaining(object.closing_date)}>
+                         {/* <button type="submit" className="btn btn-success" 
+                            id={object._id}>DELETE</button> */}
+                         <DeleteBtn />
+                     </PollCard>
+                     
+                    ))
                 ) : null }
                 
                 

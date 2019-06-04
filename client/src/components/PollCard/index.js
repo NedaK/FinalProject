@@ -2,6 +2,7 @@ import React from 'react';
 
 
 import "./style.css";
+import DeleteBtn from "../DeleteBtn"
 import { userInfo } from 'os';
 // import { Link } from "react-router-dom";
 
@@ -51,6 +52,9 @@ function PollCard(props){
                         <div className="card-footer">Winner: {props.winner}</div>
                         {/* <p className="card-text">Winner: {props.winner}</p> */}
                         {/* <p>Time remaining : {props.remaining} </p> */}
+                        {/* {(props.author === props.user)?(
+                            <DeleteBtn />
+                        ): null} */}
                         
                         
                     </div>
@@ -73,7 +77,9 @@ function PollCard(props){
                     {/* <p className="card-text">Winner: {props.winner}</p> */}
                     <div className="card-footer">Time remaining : {props.remaining} </div>
                     {/* <p>Time remaining : {props.remaining} </p> */}
-                    
+                    {/* {(props.author === props.user)?(
+                            <DeleteBtn />
+                        ): null} */}
                     
                 </div>
                 </div>
