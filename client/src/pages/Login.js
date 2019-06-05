@@ -52,10 +52,10 @@ class Login extends Component{
             <Wrapper>
             <Nav />
 
-            {/* <div className="container"> */}
+            
             <div className="row">
                 <div className="col-3"></div>
-                <div className="col-6 mx-auto" id="login">
+                <div className="col-6 mx-auto" id="signin">
                     <form id="login-form" >
                         <div className="form-group">
                             <label>Email address</label>
@@ -79,10 +79,8 @@ class Login extends Component{
                 </div>
                 <div className="col-3"></div>      
             </div>
-        {/* </div> */}
-
-            
-            
+        
+    
             
             </Wrapper>
         
