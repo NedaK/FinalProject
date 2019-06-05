@@ -13,7 +13,7 @@ import API from "../utils/API";
 //import { Link } from "react-router-dom";
 //import { threadId } from 'worker_threads';
 
-import Scrollspy from 'react-scrollspy'
+//import Scrollspy from 'react-scrollspy'
  
  
 
@@ -25,6 +25,13 @@ class Landing extends Component{
 
     }
 
+    constructor(props) {
+      super(props)
+      this.myRef = React.createRef()   // Create a ref object 
+  }
+
+  
+
     componentDidMount() {
         
        API.updateClosedPolls()
@@ -33,9 +40,16 @@ class Landing extends Component{
        .then(res => {
          console.log(res.data)
          
+       }).catch(err =>{
+         console.log(err)
        })
      
       }
+
+      scrollToMyRef = () => window.scrollTo(0, this.myRef.current.offsetTop)   
+  // run this method to execute scrolling. 
+
+  
     
     showClosedPolls = event => {
       event.preventDefault();
@@ -46,6 +60,7 @@ class Landing extends Component{
           closedPolls: resp.data
         })
       })
+      .then(this.scrollToMyRef());
     }
 
     render(){
@@ -60,20 +75,21 @@ class Landing extends Component{
   {/* <div style={{ height: '100px' }}></div> */}
             
  
-  <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current">
+  {/* <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current">
     <li><a href="#section-1">section 1</a></li>
     
-  </Scrollspy>
+  </Scrollspy> */}
  
 
 
             
-           <Body showClosedPolls={this.showClosedPolls} />
-           <div style={{ height: '250px' }}></div>
+           <Body showClosedPolls={this.showClosedPolls} scrollToMyRef={this.scrollToMyRef}/>
+           <div  style={{ height: '150px' }}></div>
+           <div className= "closedPolls" ref={this.myRef} id="section-1">
               {this.state.closedPolls.length > 0 ?(
-               <div className= "closedPolls" id="section-1">
+              //  <div className= "closedPolls"  id="section-1">
                  
-               <table className = "table">
+               <table className = "table table-striped">
                  <tbody>
                  <tr>
                     <th>Title</th>
@@ -90,18 +106,18 @@ class Landing extends Component{
                     winner = {object.winner}
                   
                 />
-                )) }</tbody></table></div> 
+                )) }</tbody></table>
               
               ): null}
                     
-               
+            </div> 
               
             
             <Footer />
             <div style={{ height: '250px' }}></div>
             <div style={{ height: '250px' }}></div>
-            <div style={{ height: '250px' }}></div>
-            <div style={{ height: '250px' }}></div>
+            {/* <div style={{ height: '250px' }}></div>
+            <div style={{ height: '250px' }}></div> */}
             
 
             </Wrapper>

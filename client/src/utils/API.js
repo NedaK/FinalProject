@@ -18,7 +18,7 @@ export default {
   },
   //update closed polls
   updateClosedPolls: function(){
-    return axios.put("/api/polls/");
+    return axios.put("/api/polls/", {});
   },
 
   //update the poll with given id and vote

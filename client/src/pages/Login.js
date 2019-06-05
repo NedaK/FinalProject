@@ -52,7 +52,7 @@ class Login extends Component{
             <Wrapper>
             <Nav />
 
-            <div className="container">
+            {/* <div className="container"> */}
             <div className="row">
                 <div className="col-3"></div>
                 <div className="col-6 mx-auto" id="login">
@@ -79,7 +79,7 @@ class Login extends Component{
                 </div>
                 <div className="col-3"></div>      
             </div>
-        </div>
+        {/* </div> */}
 
             
             

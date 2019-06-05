@@ -84,7 +84,7 @@ console.log("PAge" + this.state.page)
     <Nav user={this.props.user.payload.email} page={this.state.page}
     handleLogoutSubmit={this.handleLogoutSubmit}/>
 
-    <div className="container">
+    {/* <div className="container-fluid"> */}
     <div className="row">
         <div className="col-3"></div>
         <div className="col-6 mx-auto" id="login">
@@ -126,11 +126,10 @@ console.log("PAge" + this.state.page)
         </div>
         <div className="col-3"></div>      
     </div>
-    <div style={{ height: '250px' }}></div>
-          {this.state.userPolls.length > 0 ?(
-               <div className= "userPolls">
-                 
-               <table className = "table">
+    <div className = "row"style={{ height: '250px' }}></div>
+      <div className= "userPolls">
+          {this.state.userPolls.length > 0 ?(    
+               <table className = "table table-striped">
                  <tbody>
                  <tr>
                     <th>Title</th>
@@ -150,14 +149,15 @@ console.log("PAge" + this.state.page)
                     handleDelete = {this.handleDelete}
                   
                 />
-                )) }</tbody></table></div> 
+                )) }</tbody></table>
               
               ): null}
-                    
+                
+          </div>    
                
               
 
-</div>
+{/* </div> */}
 
     
     
